@@ -137,5 +137,5 @@ EMAIL_USE_TLS = True
 
 # ⚠️ ATENÇÃO: No Render, usaremos Variáveis de Ambiente para esconder isso.
 # Por enquanto, no Codespaces, você pode colocar seu e-mail e a senha de app aqui.
-EMAIL_HOST_USER = 'seu_email@gmail.com' # Coloque o e-mail que vai ENVIAR a mensagem
-EMAIL_HOST_PASSWORD = 'sua_senha_de_aplicativo' # Não é a senha normal do e-mail!
+EMAIL_HOST_USER = 'dharavitoria74@gmail.com' # Coloque o e-mail que vai ENVIAR a mensagem
+EMAIL_HOST_PASSWORD = 'yiqg flom nrjt yxpz' # Não é a senha normal do e-mail!
