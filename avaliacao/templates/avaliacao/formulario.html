@@ -1,0 +1,42 @@
+<!-- avaliacao/templates/avaliacao/formulario.html -->
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Avaliação YEMA</title>
+    <!-- Link para o Bootstrap (deixa o visual mais bonito automaticamente) -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-light">
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow">
+                <div class="card-header bg-primary text-white">
+                    <h3 class="text-center mb-0">Formulário de Avaliação</h3>
+                </div>
+                <div class="card-body">
+                    <p class="text-muted text-center">Por favor, preencha os dados abaixo para nos ajudar a melhorar!</p>
+                    
+                    <!-- O formulário começa aqui. O 'method="POST"' é muito importante para enviar os dados -->
+                    <form method="POST">
+                        <!-- Token de segurança obrigatório no Django para evitar ataques -->
+                        {% csrf_token %}
+                        
+                        <!-- Essa linha mágica renderiza todos os campos do nosso forms.py em parágrafos -->
+                        {{ form.as_p }}
+                        
+                        <div class="d-grid gap-2 mt-4">
+                            <button type="submit" class="btn btn-success btn-lg">Enviar Avaliação</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
