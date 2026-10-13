@@ -25,10 +25,10 @@ def formulario_avaliacao(request):
             
             Respostas:
             1. Clareza YEMA: {nova_resposta.q1_clareza}
-            3. Duração da atividade: {nova_resposta.q3_tempo}
-            4. Linguagem: {nova_resposta.q4_linguagem}
-            5. Aprendizado sobre ISTs: {nova_resposta.q5_ists}
-            6. Sugestão: {nova_resposta.q6_sugestao_opcao}
+            2. Duração da atividade: {nova_resposta.q3_tempo}
+            3. Linguagem: {nova_resposta.q4_linguagem}
+            4. Aprendizado sobre ISTs: {nova_resposta.q5_ists}
+            5. Sugestão: {nova_resposta.q6_sugestao_opcao}
             Detalhe da sugestão: {nova_resposta.q6_sugestao_texto}
             """
             

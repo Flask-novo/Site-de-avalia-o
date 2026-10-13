@@ -4,34 +4,178 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Avaliação YEMA</title>
-    <!-- Link para o Bootstrap (deixa o visual mais bonito automaticamente) -->
+    <title>Avaliação do Projeto - ISTs</title>
+    
+    <!-- Bootstrap para a estrutura base -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Fonte elegante Poppins do Google -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome para trazer o ícone do Laço Vermelho -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* 1. CONFIGURAÇÕES GERAIS E FUNDO PREMIUM */
+        body {
+            font-family: 'Poppins', sans-serif;
+            /* Novo gradiente premium: mistura de vermelho brilhante, carmesim e vinho escuro */
+            background: linear-gradient(135deg, #ff3333 0%, #cc0000 40%, #590000 100%);
+            background-attachment: fixed; /* O fundo fica fixo quando você rola a página */
+            min-height: 100vh;
+            padding-bottom: 50px;
+            position: relative;
+            overflow-x: hidden; /* Evita barra de rolagem horizontal */
+        }
+
+        /* 2. MARCA D'ÁGUA DO LAÇO GIGANTE NO FUNDO */
+        .watermark-ribbon {
+            position: fixed;
+            top: -10%;
+            right: -10%;
+            font-size: 90vh; /* Tamanho gigante baseado na altura da tela */
+            color: rgba(255, 255, 255, 0.04); /* Branco quase invisível (marca d'água) */
+            z-index: 0;
+            transform: rotate(15deg); /* Leve inclinação para dar dinamismo */
+            pointer-events: none; /* Impede que o ícone gigante bloqueie os cliques no formulário */
+        }
+
+        /* 3. EFEITO GLASSMORPHISM (VIDRO) NO CARTÃO */
+        .card-custom {
+            border: 1px solid rgba(255, 255, 255, 0.3); /* Bordinha branca translúcida */
+            border-radius: 20px;
+            /* Fundo branco com leve transparência para ver o vermelho de fundo */
+            background-color: rgba(255, 255, 255, 0.96); 
+            backdrop-filter: blur(10px); /* Desfoca o que está atrás do cartão */
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4); /* Sombra difusa premium */
+            z-index: 1; /* Mantém o cartão acima da marca d'água */
+            position: relative;
+        }
+
+        .card-header-custom {
+            background-color: transparent;
+            color: #b30000;
+            padding: 40px 25px 15px;
+            border-bottom: none;
+        }
+
+        /* Estilização do ícone do laço no título */
+        .header-icon {
+            font-size: 3rem;
+            color: #e60000;
+            margin-bottom: 15px;
+            filter: drop-shadow(0 4px 6px rgba(230, 0, 0, 0.3)); /* Sombra vermelha brilhante no ícone */
+        }
+
+        /* 4. CAIXINHAS DE RESPOSTAS SUPER PERSONALIZADAS */
+        form ul {
+            list-style-type: none;
+            padding: 0;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+        
+        form ul li input[type="radio"] {
+            display: none; /* Esconde a bolinha nativa do navegador */
+        }
+
+        form ul li label {
+            background-color: #ffffff;
+            border: 2px solid #e0e0e0;
+            border-radius: 12px;
+            padding: 12px 25px;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); /* Animação super suave ao passar o mouse */
+            font-weight: 500;
+            color: #555;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.02);
+        }
+
+        form ul li label:hover {
+            border-color: #ff9999;
+            background-color: #fff0f0;
+            transform: translateY(-2px); /* A caixinha sobe um pouquinho */
+        }
+
+        /* Estado quando a caixinha é clicada/selecionada */
+        form ul li input[type="radio"]:checked + label {
+            background-color: #fff0f0;
+            border-color: #e60000;
+            color: #cc0000;
+            font-weight: 600;
+            box-shadow: 0 5px 15px rgba(230, 0, 0, 0.15);
+        }
+
+        /* Textos das perguntas */
+        p {
+            margin-bottom: 25px;
+            font-weight: 600;
+            color: #2c3e50;
+            font-size: 1.05rem;
+        }
+
+        /* 5. BOTÃO DE ENVIO MAGNÉTICO */
+        .btn-enviar {
+            background: linear-gradient(135deg, #e60000 0%, #990000 100%);
+            border: none;
+            color: white;
+            font-weight: 700;
+            letter-spacing: 1px;
+            border-radius: 12px;
+            padding: 16px;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 20px rgba(153, 0, 0, 0.3);
+            text-transform: uppercase;
+        }
+        
+        .btn-enviar:hover {
+            background: linear-gradient(135deg, #ff1a1a 0%, #b30000 100%);
+            transform: translateY(-3px); /* Efeito de elevação ao passar o mouse */
+            box-shadow: 0 12px 25px rgba(153, 0, 0, 0.4);
+        }
+
+        /* Campos de texto (Nome, telefone e sugestões) */
+        .form-control {
+            border-radius: 10px;
+            border: 2px solid #e0e0e0;
+            padding: 12px;
+            transition: all 0.3s;
+        }
+        
+        .form-control:focus {
+            border-color: #e60000;
+            box-shadow: 0 0 0 0.25rem rgba(230, 0, 0, 0.15);
+        }
+    </style>
 </head>
-<body class="bg-light">
+<body>
+
+<!-- Ícone Gigante de Fundo (Marca d'água flutuante) -->
+<i class="fas fa-ribbon watermark-ribbon"></i>
 
 <div class="container mt-5">
     <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card shadow">
-                <div class="card-header bg-primary text-white">
-                    <h3 class="text-center mb-0">Formulário de Avaliação</h3>
+        <div class="col-lg-9 col-md-11">
+            <div class="card card-custom mt-4 mb-5">
+                <div class="card-header-custom text-center">
+                    <!-- Símbolo do Laço Vermelho no Cabeçalho -->
+                    <i class="fas fa-ribbon header-icon"></i>
+                    <h2 class="mb-0 fw-bold">Avaliação do Projeto</h2>
+                    <p class="mt-2 text-muted" style="font-weight: 400;">Conscientização sobre ISTs - Sua opinião é essencial.</p>
                 </div>
-                <div class="card-body">
-                    <p class="text-muted text-center">Por favor, preencha os dados abaixo para nos ajudar a melhorar!</p>
+                <div class="card-body p-sm-5 p-4">
                     
-                    <!-- O formulário começa aqui. O 'method="POST"' é muito importante para enviar os dados -->
                     <form method="POST">
-                        <!-- Token de segurança obrigatório no Django para evitar ataques -->
                         {% csrf_token %}
-                        
-                        <!-- Essa linha mágica renderiza todos os campos do nosso forms.py em parágrafos -->
+                        <!-- Renderiza os campos ajustados no forms.py -->
                         {{ form.as_p }}
                         
-                        <div class="d-grid gap-2 mt-4">
-                            <button type="submit" class="btn btn-success btn-lg">Enviar Avaliação</button>
+                        <div class="d-grid gap-2 mt-5 pt-3 border-top">
+                            <button type="submit" class="btn btn-enviar btn-lg">
+                                <i class="fas fa-paper-plane me-2"></i> Enviar Respostas
+                            </button>
                         </div>
                     </form>
+
                 </div>
             </div>
         </div>
