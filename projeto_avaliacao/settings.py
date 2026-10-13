@@ -129,13 +129,26 @@ MAILERS = {
 
 
 # ADICIONE ESTA ESTRUTURA NO FINAL DO SETTINGS.PY:
+# projeto_avaliacao/settings.py (Final do arquivo)
+
 MAILERS = {
     "default": {
         "BACKEND": "django.core.mail.backends.smtp.EmailBackend",
-        "HOST": "smtp.gmail.com",
-        "PORT": 587,
-        "USE_TLS": True,
-        "USER": "dharavitoria74@gmail.com'",
-        "PASSWORD": "yiqgflomnrjtyxpz",
+        # As configurações específicas do provedor (Gmail) devem ficar dentro de OPTIONS:
+        "OPTIONS": {
+            "host": "smtp.gmail.com",
+            "port": 587,
+            "use_tls": True,
+            "username": "dharavitoria74@gmail.com",
+            "password": "yiqgflomnrjtyxpz",
+        }
     }
 }
+
+
+# Permite que o GitHub Codespaces, localhost e o Render enviem formulários com segurança
+CSRF_TRUSTED_ORIGINS = [
+    'https://localhost:8000',
+    'https://*.github.dev',
+    'https://*.onrender.com',
+]

@@ -9,7 +9,6 @@ class AvaliacaoForm(forms.ModelForm):
         
         widgets = {
             'nome': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Digite seu nome completo'}),
-            'telefone': forms.TextInput(attrs={'class': 'form-control', 'placeholder': '(00) 00000-0000'}),
             'q1_clareza': forms.RadioSelect(),
             'q3_tempo': forms.RadioSelect(),
             'q4_linguagem': forms.RadioSelect(),
