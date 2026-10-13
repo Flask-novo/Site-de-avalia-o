@@ -13,7 +13,7 @@ class RespostaAvaliacao(models.Model):
     OPCOES_Q6 = [('Sim', 'Sim'), ('Não', 'Não'), ('Talvez', 'Talvez')]
 
     # Campos do questionário
-    q1_clareza = models.CharField(max_length=50, choices=OPCOES_Q1, verbose_name="1. Como você avalia a clareza da explicação sobre o que é o TEMA?")
+    q1_clareza = models.CharField(max_length=50, choices=OPCOES_Q1, verbose_name="1. Como você avalia a clareza da explicação sobre o assunto abordado?")
     q3_tempo = models.CharField(max_length=50, choices=OPCOES_Q3, verbose_name="2. Como você avalia o tempo de duração da atividade?")
     q4_linguagem = models.CharField(max_length=50, choices=OPCOES_Q4, verbose_name="3. A linguagem utilizada foi de fácil compreensão?")
     q5_ists = models.CharField(max_length=50, choices=OPCOES_Q5, verbose_name="4. A atividade ajudou você a aprender algo novo sobre as ISTs?")
