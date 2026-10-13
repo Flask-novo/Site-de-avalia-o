@@ -127,15 +127,14 @@ MAILERS = {
 }
 
 
-# projeto_avaliacao/settings.py (Adicione no final do arquivo)
-
-# Configurações de E-mail (Exemplo usando Gmail)
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_PORT = 587
-EMAIL_USE_TLS = True
-
-# ⚠️ ATENÇÃO: No Render, usaremos Variáveis de Ambiente para esconder isso.
-# Por enquanto, no Codespaces, você pode colocar seu e-mail e a senha de app aqui.
-EMAIL_HOST_USER = 'dharavitoria74@gmail.com' # Coloque o e-mail que vai ENVIAR a mensagem
-EMAIL_HOST_PASSWORD = 'yiqg flom nrjt yxpz' # Não é a senha normal do e-mail!
+# ADICIONE ESTA ESTRUTURA NO FINAL DO SETTINGS.PY:
+MAILERS = {
+    "default": {
+        "BACKEND": "django.core.mail.backends.smtp.EmailBackend",
+        "HOST": "smtp.gmail.com",
+        "PORT": 587,
+        "USE_TLS": True,
+        "USER": "dharavitoria74@gmail.com'",
+        "PASSWORD": "yiqgflomnrjtyxpz",
+    }
+}

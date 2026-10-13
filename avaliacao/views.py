@@ -32,12 +32,14 @@ def formulario_avaliacao(request):
             Detalhe da sugestão: {nova_resposta.q6_sugestao_texto}
             """
             
+            # avaliacao/views.py (dentro do bloco if form.is_valid():)
+
             # 3. Envia o e-mail
             send_mail(
                 subject=assunto,
                 message=mensagem,
-                from_email=settings.EMAIL_HOST_USER,
-                recipient_list=['seu_email_que_vai_receber@gmail.com'], # Coloque seu e-mail aqui
+                from_email='dharavitoria74@gmail.com', # <-- Alterar esta linha
+                recipient_list=['dharavitoria74@gmail.com'], 
                 fail_silently=False,
             )
             
