@@ -1,0 +1,2 @@
+# Adiciona esta linha no final do ficheiro .gitignore
+.env

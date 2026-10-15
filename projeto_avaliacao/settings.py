@@ -10,7 +10,11 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/6.1/ref/settings/
 """
 
+import os
 from pathlib import Path
+from dotenv import load_dotenv
+
+load_dotenv() 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -140,16 +144,18 @@ MAILERS = {
 # ADICIONE ESTA ESTRUTURA NO FINAL DO SETTINGS.PY:
 # projeto_avaliacao/settings.py (Final do arquivo)
 
+# projeto_avaliacao/settings.py (Bloco de E-mail)
+
 MAILERS = {
     "default": {
         "BACKEND": "django.core.mail.backends.smtp.EmailBackend",
-        # As configurações específicas do provedor (Gmail) devem ficar dentro de OPTIONS:
         "OPTIONS": {
             "host": "smtp.gmail.com",
             "port": 587,
             "use_tls": True,
-            "username": "dharavitoria74@gmail.com",
-            "password": "yiqgflomnrjtyxpz",
+            # Em vez do texto fixo, ele vai buscar as variáveis seguras:
+            "username": os.getenv("EMAIL_USER"), 
+            "password": os.getenv("EMAIL_PASSWORD"),
         }
     }
 }
